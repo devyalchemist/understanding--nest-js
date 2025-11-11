@@ -34,7 +34,15 @@ export class UsersController {
     return this.usersService.createUser(body);
   }
   @Patch(':id')
-  editOne(@Param('id') id: string, @Body() editUserDetails: {}) {
+  editOne(
+    @Param('id') id: string,
+    @Body()
+    editUserDetails: {
+      name?: string;
+      email?: string;
+      role?: 'INTERN' | 'ADMIN' | 'ENGINEER';
+    },
+  ) {
     return this.usersService.editOne(+id, editUserDetails);
   }
   @Delete(':id')
